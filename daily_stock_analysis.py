@@ -63,7 +63,6 @@ def excel_name(dat):
 
 
 def main():
-    get_curr_date()
     input_date=getinput()
     print(get_csv_name(input_date))
     nifty100_df=dataf("d:\\test\ind_nifty100list.csv")
