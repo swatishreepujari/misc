@@ -26,6 +26,10 @@ def getdate(dat):
         print("This is the incorrect date string format. It should be DDMMYYYY")
         sys.exit(2)
 
+def get_curr_date():
+    cur_dat=datetime.date.today()
+    return cur_dat.strftime("%d%m%Y")
+
 
 def getinput():
     try:
@@ -34,6 +38,11 @@ def getinput():
     # Output error, and return with an error code
         print (str(err))
         sys.exit(2)
+    if len(arguments) == 0 :
+        arg=[]
+        arg.append('-d')
+        arg.append(get_curr_date())
+        arguments.append(tuple(arg))
     for current_argument, current_value in arguments:
         if current_argument in ("-h", "--help"):
             help()
@@ -54,6 +63,7 @@ def excel_name(dat):
 
 
 def main():
+    get_curr_date()
     input_date=getinput()
     print(get_csv_name(input_date))
     nifty100_df=dataf("d:\\test\ind_nifty100list.csv")
